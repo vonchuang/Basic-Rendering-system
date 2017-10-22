@@ -64,7 +64,9 @@ int main(void)
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         auto model = glm::rotate(glm::mat4(1.0f), static_cast<float>(glfwGetTime())
             , glm::vec3(0.0f, 1.0f, 0.0f));
-        uniform_model = model;
+		auto model_trans = glm::translate(model, glm::vec3(0.0f, 0.0f, -5.0f));
+
+        uniform_model = model_trans;
         prog.use();
         text.bindToChannel(0);
         mesh1.draw();
