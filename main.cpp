@@ -65,7 +65,7 @@ int main(void)
 	//-------------- sun end ------------------------
 	//------------- satel -------------------
 	auto earth_satel = StaticMesh::LoadMesh("../resource/sphere.obj");
-	auto prog_satel = Program::LoadFromFile("../resource/vs.txt", "../resource/fs_Lambert.txt");
+	auto prog_satel = Program::LoadFromFile("../resource/vs.txt", "../resource/fs.txt");
 	auto text_satel = Texture2D::LoadFromFile("../resource/sun.png");
 	// Remove this line and see the difference
 	text_satel.setFilter(FilterMode::eNearestMipmapLinear, FilterMode::eLinear);
@@ -218,6 +218,7 @@ int main(void)
 	auto uniform_model9 = prog9["model"];
 	//-------------- mesh9 end ------------------------
 
+	glProvokingVertex(GL_FIRST_VERTEX_CONVENTION);
     glEnable(GL_DEPTH_TEST);
     while (!glfwWindowShouldClose(window))
     {
