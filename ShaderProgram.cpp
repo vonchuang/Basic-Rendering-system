@@ -55,7 +55,7 @@ glm::mat4 UniformVariable::operator=(const glm::mat4 &v)
 {
     // mat4 of glm is column major, same as opengl
     // we don't need to transpose it. so..GL_FALSE
-    glUniformMatrix4fv(m_id, 1, GL_FALSE, glm::value_ptr(v));
+    glUniformMatrix4fv(m_id, 1, GL_FALSE, glm::value_ptr(v));	
     return v;
 }
 
@@ -98,11 +98,15 @@ Program Program::LoadFromFile(const std::string &vs, const std::string &fs)
 	auto fs_src = ::read_file(fs);
 
     GLuint vshader=glCreateShader(GL_VERTEX_SHADER);
-    GLuint fshader=glCreateShader(GL_FRAGMENT_SHADER);
+    GLuint fshader=glCreateShader(GL_FRAGMENT_SHADER);	//建立名字
     int len = static_cast<int>(vs_src.length());
     const char *c = vs_src.c_str();
-    glShaderSource(vshader, 1, &c, &len);
-    glCompileShader(vshader);
+    glShaderSource(vshader, 1, &c, &len);	//上傳 shader，1個 shader
+    glCompileShader(vshader);	
+	int status;	//NEW
+	glGetShaderiv(vshader, GL_COMPILE_STATUS, &status);	//NEW
+	char buf[1024];	//NEW
+	glGetShaderInfoLog(vshader,1024, &len, buf);	//NEW	//2. buffer 多長
     len = static_cast<int>(fs_src.length());
     c = fs_src.c_str();
     glShaderSource(fshader, 1, &c, &len);
@@ -141,7 +145,7 @@ UniformVariable &Program::operator[](const std::string &name)
     auto it = m_uniformVariables.find(name);
     if(it==m_uniformVariables.cend()) {
         auto &obj = m_uniformVariables[name];
-        obj = UniformVariable(glGetUniformLocation(m_program, name.c_str()));
+        obj = UniformVariable(glGetUniformLocation(m_program, name.c_str()));	//glGetUniformLocation 查id，送給 obj 建立 
         return obj;
     } else
         return it->second;

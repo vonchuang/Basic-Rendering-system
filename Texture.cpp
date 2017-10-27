@@ -34,8 +34,8 @@ Texture2D Texture2D::LoadFromFile(const std::string & pngfile)
 
 void Texture2D::bindToChannel(GLuint channel)
 {
-    glActiveTexture(GL_TEXTURE0+channel);
-    glBindTexture(GL_TEXTURE_2D, m_id);
+    glActiveTexture(GL_TEXTURE0+channel);	//啟動特定通道	//預設通道 0 就開的  //必要的！有些網上範例沒有
+    glBindTexture(GL_TEXTURE_2D, m_id);		//綁
 }
 
 void Texture2D::setWrap(WrapMode s, WrapMode t, WrapMode r)

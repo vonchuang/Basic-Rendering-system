@@ -1,21 +1,31 @@
 #version 330
-layout(location=0) in vec3 position;
-layout(location=1) in vec2 texcoord;
-layout(location=2) in vec3 normal;
-
+layout(location=0) in vec3 position;	//3 個 attribute(vertex 性質) //xyz
+layout(location=1) in vec2 texcoord;	//uv
+layout(location=2) in vec3 normal;		//nx, ny, nz 
+										//glEnableVertexAttribArray(1);  
+										//glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, 0);
+										// 三角形、頂點
+										// 多個三角形、個別處裡
+										// 三維坐標系轉成投影
+										//只想一個頂點
 // uniform variable can be viewed as a constant
 // you can set the uniform variable by glUniformXXXXXXXX
+
 uniform mat4 model;
 uniform mat4 vp;
-
 // 'out' means vertex shader output for fragment shader
-out vec3 vNormal;
+out vec3 vNormal;						
 out vec2 vUV;
+out vec3 vPos;
 
 void main()
 {
-	vNormal = vec3(model * vec4(normal, 0.0));
-	vUV = texcoord;
-	
+	vNormal = vec3(model * vec4(normal, 0.0));	//homogenius coord. [x, y, z, w]
+												//normal 不移動 -> w 填 0.
+
+	vUV = texcoord;								// 填色時，拿vNormal,vUV內插
+	vPos = vec3(model * vec4(position, 1.0));
 	gl_Position=vp*model*vec4(position, 1.0);
+
+
 }
