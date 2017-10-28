@@ -8,7 +8,7 @@ layout(location=0) out vec4 color;
 uniform sampler2D text;
 uniform vec3 ambient = vec3(0.2, 0.2, 0.2);
 uniform vec3 eyePos = vec3(25, 25, 25);
-flat in vec3 vNormal;						//à–翴常竒筁 fs.txt ず锣传
+in vec3 vNormal;						//à–翴常竒筁 fs.txt ず锣传
 in vec2 vUV;							//flat in vec2 vUV;	 ぃず础
 in vec3 vPos;
 void main()

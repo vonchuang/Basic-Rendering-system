@@ -1,5 +1,6 @@
 #include "Texture.h"
 #include <lodepng.h>
+#include <cstdint>
 
 // Reference https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glTexParameter.xhtml
 
@@ -34,8 +35,8 @@ Texture2D Texture2D::LoadFromFile(const std::string & pngfile)
 
 void Texture2D::bindToChannel(GLuint channel)
 {
-    glActiveTexture(GL_TEXTURE0+channel);	//啟動特定通道	//預設通道 0 就開的  //必要的！有些網上範例沒有
-    glBindTexture(GL_TEXTURE_2D, m_id);		//綁
+    glActiveTexture(GL_TEXTURE0+channel);
+    glBindTexture(GL_TEXTURE_2D, m_id);
 }
 
 void Texture2D::setWrap(WrapMode s, WrapMode t, WrapMode r)
@@ -53,6 +54,7 @@ void Texture2D::release()
 
 void Texture2D::setFilter(FilterMode min, FilterMode mag)
 {
+    glBindTexture(GL_TEXTURE_2D, m_id);
     // if mipmapping is required, generate it
     if (min >= FilterMode::eNearestMipmapLinear) {
         glGenerateMipmap(GL_TEXTURE_2D);
@@ -63,7 +65,6 @@ void Texture2D::setFilter(FilterMode min, FilterMode mag)
         mag = FilterMode::eNearest;
     }
 
-    glBindTexture(GL_TEXTURE_2D, m_id);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, FilterModeOpenGLMapping[static_cast<uint32_t>(min)]);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, FilterModeOpenGLMapping[static_cast<uint32_t>(mag)]);
 }

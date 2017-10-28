@@ -1,0 +1,17 @@
+//Phone Reflection model + Smooth/Gouraud shading
+#version 330
+
+// Default color buffer location is 0
+// If you create framebuffer your own, you need to take care of it
+layout(location=0) out vec4 color;
+
+uniform sampler2D text;				
+
+in vec3 vcolor;			
+in vec2 vUV;
+
+void main()
+{
+	vec3 c = texture(text, vUV).xyz;
+	color = vec4(c*vcolor, 1.0);
+}

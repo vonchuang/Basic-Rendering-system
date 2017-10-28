@@ -14,7 +14,7 @@ layout(location=2) in vec3 normal;		//nx, ny, nz
 uniform mat4 model;
 uniform mat4 vp;
 // 'out' means vertex shader output for fragment shader
-flat out vec3 vNormal;						
+out vec3 vNormal;						
 out vec2 vUV;
 out vec3 vPos;
 

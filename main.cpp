@@ -10,6 +10,7 @@
 #include "ShaderProgram.h"
 #include "StaticMesh.h"
 #include "Texture.h"
+#include "Axis.h"
 #include <glm/gtc/quaternion.hpp>
 #include <glm/gtx/quaternion.hpp>
 #include "glm/gtx/norm.hpp"
@@ -49,7 +50,7 @@ int main(void)
 	//------------- sun -------------------
     auto earth = StaticMesh::LoadMesh("../resource/sphere.obj");
     auto prog = Program::LoadFromFile("../resource/vs.txt", "../resource/fs.txt");
-	auto text = Texture2D::LoadFromFile("../resource/moon.png");
+	auto text = Texture2D::LoadFromFile("../resource/earth.png");
 	// Remove this line and see the difference
 	text.setFilter(FilterMode::eNearestMipmapLinear, FilterMode::eLinear);
 
@@ -66,7 +67,7 @@ int main(void)
 	//------------- satel -------------------
 	auto earth_satel = StaticMesh::LoadMesh("../resource/sphere.obj");
 	auto prog_satel = Program::LoadFromFile("../resource/vs.txt", "../resource/fs.txt");
-	auto text_satel = Texture2D::LoadFromFile("../resource/sun.png");
+	auto text_satel = Texture2D::LoadFromFile("../resource/moon.png");
 	// Remove this line and see the difference
 	text_satel.setFilter(FilterMode::eNearestMipmapLinear, FilterMode::eLinear);
 
@@ -83,8 +84,18 @@ int main(void)
 
 	//-------------- earth  -----------------------------
 	auto sun = StaticMesh::LoadMesh("../resource/sphere.obj");
-	auto prog2 = Program::LoadFromFile("../resource/vs.txt", "../resource/fs.txt");
-	auto text2 = Texture2D::LoadFromFile("../resource/earth.png");
+	//auto prog2 = Program::LoadFromFile("../resource/vs.txt", "../resource/fs.txt");
+	auto prog2 = Program::LoadFromFile("../resource/vs_Flat.txt", "../resource/fs_Flat.txt");	//Phong Reflection Model + Flat shading
+	//auto prog2 = Program::LoadFromFile("../resource/vs_Phong_Gouraud.txt", "../resource/fs_Phong_Gouraud.txt");	//Phong Reflection Model + Gouraud shading
+	//auto prog2 = Program::LoadFromFile("../resource/vs.txt", "../resource/fs.txt");	//Phong Reflection Model + Phong shading
+	//auto prog2 = Program::LoadFromFile("../resource/vs_Flat.txt", "../resource/fs_Lambert_Flat.txt");	//Lambert Reflection Model + Flat shading
+	//auto prog2 = Program::LoadFromFile("../resource/vs_Lambert_Gouraud.txt", "../resource/fs_Lambert_Gouraud.txt");	//Lambert Reflection Model + Gouraud shading
+	//auto prog2 = Program::LoadFromFile("../resource/vs.txt", "../resource/fs_Lambert.txt");	//Lambert Reflection Model + Phong shading
+	//auto prog2 = Program::LoadFromFile("../resource/vs_Flat.txt", "../resource/fs_BlinnPhong_Flat.txt");	//Blinn-Phone Reflection Model + Flat shading
+	//auto prog2 = Program::LoadFromFile("../resource/vs_BlinnPhong_Gouraud.txt", "../resource/fs_BlinnPhong_Gouraud.txt");	//Blinn-Phong Reflection Model + Gouraud shading
+	//auto prog2 = Program::LoadFromFile("../resource/vs.txt", "../resource/fs_BlinnPhong.txt");	//Blinn-Phong Reflection Model + Phong shading
+	
+	auto text2 = Texture2D::LoadFromFile("../resource/sun.png");
 	// Remove this line and see the difference
 	text2.setFilter(FilterMode::eNearestMipmapLinear, FilterMode::eLinear);
 
@@ -203,7 +214,7 @@ int main(void)
 	//------------- mesh9 -------------------
 	auto mesh9 = StaticMesh::LoadMesh("../resource/sphere.obj");
 	auto prog9 = Program::LoadFromFile("../resource/vs.txt", "../resource/fs.txt");
-	auto text9 = Texture2D::LoadFromFile("../resource/neptune.png");
+	auto text9 = Texture2D::LoadFromFile("../resource/sun.png");
 	// Remove this line and see the difference
 	text9.setFilter(FilterMode::eNearestMipmapLinear, FilterMode::eLinear);
 
