@@ -66,7 +66,7 @@ int main(void)
 	//-------------- sun end ------------------------
 	//------------- satel -------------------
 	auto earth_satel = StaticMesh::LoadMesh("../resource/sphere.obj");
-	auto prog_satel = Program::LoadFromFile("../resource/vs.txt", "../resource/fs.txt");
+	auto prog_satel = Program::LoadFromFile("../resource/vs_BlinnPhong_Gouraud.txt", "../resource/fs_BlinnPhong_Gouraud.txt");	//Blinn-Phong Reflection Model + Gouraud shading
 	auto text_satel = Texture2D::LoadFromFile("../resource/moon.png");
 	// Remove this line and see the difference
 	text_satel.setFilter(FilterMode::eNearestMipmapLinear, FilterMode::eLinear);
@@ -85,7 +85,7 @@ int main(void)
 	//-------------- earth  -----------------------------
 	auto sun = StaticMesh::LoadMesh("../resource/sphere.obj");
 	//auto prog2 = Program::LoadFromFile("../resource/vs.txt", "../resource/fs.txt");
-	auto prog2 = Program::LoadFromFile("../resource/vs_Flat.txt", "../resource/fs_Flat.txt");	//Phong Reflection Model + Flat shading
+	//auto prog2 = Program::LoadFromFile("../resource/vs_Flat.txt", "../resource/fs_Flat.txt");	//Phong Reflection Model + Flat shading
 	//auto prog2 = Program::LoadFromFile("../resource/vs_Phong_Gouraud.txt", "../resource/fs_Phong_Gouraud.txt");	//Phong Reflection Model + Gouraud shading
 	//auto prog2 = Program::LoadFromFile("../resource/vs.txt", "../resource/fs.txt");	//Phong Reflection Model + Phong shading
 	//auto prog2 = Program::LoadFromFile("../resource/vs_Flat.txt", "../resource/fs_Lambert_Flat.txt");	//Lambert Reflection Model + Flat shading
@@ -93,7 +93,7 @@ int main(void)
 	//auto prog2 = Program::LoadFromFile("../resource/vs.txt", "../resource/fs_Lambert.txt");	//Lambert Reflection Model + Phong shading
 	//auto prog2 = Program::LoadFromFile("../resource/vs_Flat.txt", "../resource/fs_BlinnPhong_Flat.txt");	//Blinn-Phone Reflection Model + Flat shading
 	//auto prog2 = Program::LoadFromFile("../resource/vs_BlinnPhong_Gouraud.txt", "../resource/fs_BlinnPhong_Gouraud.txt");	//Blinn-Phong Reflection Model + Gouraud shading
-	//auto prog2 = Program::LoadFromFile("../resource/vs.txt", "../resource/fs_BlinnPhong.txt");	//Blinn-Phong Reflection Model + Phong shading
+	auto prog2 = Program::LoadFromFile("../resource/vs.txt", "../resource/fs_BlinnPhong.txt");	//Blinn-Phong Reflection Model + Phong shading
 	
 	auto text2 = Texture2D::LoadFromFile("../resource/sun.png");
 	// Remove this line and see the difference
@@ -111,7 +111,7 @@ int main(void)
 	//-------------- earth end ------------------------
 	//------------- mesh3 -------------------
 	auto mesh3 = StaticMesh::LoadMesh("../resource/sphere.obj");
-	auto prog3 = Program::LoadFromFile("../resource/vs.txt", "../resource/fs.txt");
+	auto prog3 = Program::LoadFromFile("../resource/vs_Flat.txt", "../resource/fs_Flat.txt");	//Phong Reflection Model + Flat shading
 	auto text3 = Texture2D::LoadFromFile("../resource/mercury.png");
 	// Remove this line and see the difference
 	text3.setFilter(FilterMode::eNearestMipmapLinear, FilterMode::eLinear);
@@ -128,7 +128,7 @@ int main(void)
 	//-------------- mesh3 end ------------------------
 	//------------- mesh4 -------------------
 	auto mesh4 = StaticMesh::LoadMesh("../resource/sphere.obj");
-	auto prog4 = Program::LoadFromFile("../resource/vs.txt", "../resource/fs.txt");
+	auto prog4 = Program::LoadFromFile("../resource/vs_Phong_Gouraud.txt", "../resource/fs_Phong_Gouraud.txt");	//Phong Reflection Model + Gouraud shading
 	auto text4 = Texture2D::LoadFromFile("../resource/venus.png");
 	// Remove this line and see the difference
 	text4.setFilter(FilterMode::eNearestMipmapLinear, FilterMode::eLinear);
@@ -145,7 +145,7 @@ int main(void)
 	//-------------- mesh4 end ------------------------
 	//------------- mesh5 -------------------
 	auto mesh5 = StaticMesh::LoadMesh("../resource/sphere.obj");
-	auto prog5 = Program::LoadFromFile("../resource/vs.txt", "../resource/fs.txt");
+	auto prog5 = Program::LoadFromFile("../resource/vs.txt", "../resource/fs.txt");	//Phong Reflection Model + Phong shading
 	auto text5 = Texture2D::LoadFromFile("../resource/mars.png");
 	// Remove this line and see the difference
 	text5.setFilter(FilterMode::eNearestMipmapLinear, FilterMode::eLinear);
@@ -162,7 +162,7 @@ int main(void)
 	//-------------- mesh5 end ------------------------
 	//------------- mesh6 -------------------
 	auto mesh6 = StaticMesh::LoadMesh("../resource/sphere.obj");
-	auto prog6 = Program::LoadFromFile("../resource/vs.txt", "../resource/fs.txt");
+	auto prog6 = Program::LoadFromFile("../resource/vs_Flat.txt", "../resource/fs_Lambert_Flat.txt");	//Lambert Reflection Model + Flat shading
 	auto text6 = Texture2D::LoadFromFile("../resource/jupiter.png");
 	// Remove this line and see the difference
 	text6.setFilter(FilterMode::eNearestMipmapLinear, FilterMode::eLinear);
@@ -179,7 +179,7 @@ int main(void)
 	//-------------- mesh6 end ------------------------
 	//------------- mesh7 -------------------
 	auto mesh7 = StaticMesh::LoadMesh("../resource/sphere.obj");
-	auto prog7 = Program::LoadFromFile("../resource/vs.txt", "../resource/fs.txt");
+	auto prog7 = Program::LoadFromFile("../resource/vs_Lambert_Gouraud.txt", "../resource/fs_Lambert_Gouraud.txt");	//Lambert Reflection Model + Gouraud shading
 	auto text7 = Texture2D::LoadFromFile("../resource/saturn.png");
 	// Remove this line and see the difference
 	text7.setFilter(FilterMode::eNearestMipmapLinear, FilterMode::eLinear);
@@ -196,7 +196,7 @@ int main(void)
 	//-------------- mesh7 end ------------------------
 	//------------- mesh8 -------------------
 	auto mesh8 = StaticMesh::LoadMesh("../resource/sphere.obj");
-	auto prog8 = Program::LoadFromFile("../resource/vs.txt", "../resource/fs.txt");
+	auto prog8 = Program::LoadFromFile("../resource/vs.txt", "../resource/fs_Lambert.txt");	//Lambert Reflection Model + Phong shading
 	auto text8 = Texture2D::LoadFromFile("../resource/uranus.png");
 	// Remove this line and see the difference
 	text8.setFilter(FilterMode::eNearestMipmapLinear, FilterMode::eLinear);
@@ -213,7 +213,7 @@ int main(void)
 	//-------------- mesh8 end ------------------------
 	//------------- mesh9 -------------------
 	auto mesh9 = StaticMesh::LoadMesh("../resource/sphere.obj");
-	auto prog9 = Program::LoadFromFile("../resource/vs.txt", "../resource/fs.txt");
+	auto prog9 = Program::LoadFromFile("../resource/vs_Flat.txt", "../resource/fs_BlinnPhong_Flat.txt");	//Blinn-Phone Reflection Model + Flat shading
 	auto text9 = Texture2D::LoadFromFile("../resource/sun.png");
 	// Remove this line and see the difference
 	text9.setFilter(FilterMode::eNearestMipmapLinear, FilterMode::eLinear);
@@ -273,24 +273,29 @@ int main(void)
 		//auto model_trans3 = glm::translate(model_rotat3, glm::vec3(0.0f, 0.0f, -3.0f));
 		//auto model_scale3 = glm::scale(model_trans3, glm::vec3(0.5f, 0.5f, 0.5f));
 		//uniform_model3 = model_scale3;
-        glm::quat myQuat;
-		myQuat = normalize(glm::quat(0, sin(static_cast<float>(0.5*glfwGetTime())/2),0, cos(static_cast<float>(0.5*glfwGetTime())/2)));
-		glm::mat4 RotationMatrix = glm::toMat4(myQuat);
-		glm::quat myQuat2;
-		myQuat2 = normalize(glm::quat(sin(static_cast<float>(1.5*glfwGetTime()) / 2), sin(static_cast<float>(1.5*glfwGetTime()) / 2), 0, cos(static_cast<float>(1.5*glfwGetTime()) / 2)));
-		glm::mat4 RotationMatrix2 = glm::toMat4(myQuat2);
-		auto model3 = RotationMatrix;
+        
+		// #include <glm/gtc/quaternion.hpp> and <glm/gtx/quaternion.hpp>
+		//Rotate
+		glm::quat quat_rotat;	// Creates an identity quaternion (no rotation)
+		quat_rotat = normalize(glm::quat(0, sin(static_cast<float>(0.5*glfwGetTime())/2),0, cos(static_cast<float>(0.5*glfwGetTime())/2)));
+		glm::mat4 matrix_rotate = glm::toMat4(quat_rotat); //quaternion to matrix
+		auto model3 = matrix_rotate;
+		//Translate
 		auto v = glm::vec3(4.0f, 0.0f, 0.0f);
 		auto u = glm::vec3(0.5f, 0.5f, 0.5f);
 		model3[3] = model[0]*v[0]+ model[1]*v[1]+model[2]*v[2]+ model[3];
-		auto model_trans3 = model3*RotationMatrix2;
+		//Rotate2
+		glm::quat quat_rotat2;
+		quat_rotat2 = normalize(glm::quat(sin(static_cast<float>(1.5*glfwGetTime()) / 2), sin(static_cast<float>(1.5*glfwGetTime()) / 2), 0, cos(static_cast<float>(1.5*glfwGetTime()) / 2)));
+		glm::mat4 matrix_rotate2 = glm::toMat4(quat_rotat2);
+		auto model_trans3 = model3*matrix_rotate2;
+		//Scale
 		model3[0] = model[0] * u[0];
 		model3[1] = model[1] * u[1];
 		model3[2] = model[2] * u[2];
 		model3[3] = model[3];
 		auto model_scale3 = model3*model_trans3;
 		uniform_model3 = model_scale3;
-
 		
 		prog3.use();
 		text3.bindToChannel(0);

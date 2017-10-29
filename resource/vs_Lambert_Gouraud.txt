@@ -1,3 +1,4 @@
+//Lambert Reflection model + Smooth/Gouraud shading
 #version 330
 layout(location=0) in vec3 position;	//3 個 attribute(vertex 性質) //xyz
 layout(location=1) in vec2 texcoord;	//uv
@@ -24,12 +25,10 @@ out vec2 vUV;
 void main()
 {
 	vec3 vNormal = vec3(model * vec4(normal, 0.0));	//homogenius coord. [x, y, z, w]
-												//normal 不移動 -> w 填 0.
 	vec3 vPos = vec3(model * vec4(position, 1.0));
 	vUV = texcoord;
 
 	//lighting
-	vec3 c = texture(text, vUV).xyz;			//.xyz ->萃取rgb, vec4 改成 vec3
 	vec3 l = normalize(vec3(1, 1, 0));
 	float diffuse = max(dot(vNormal, l), 0);	//Lamber diffuse model 
 	vcolor = vec3(diffuse);
