@@ -7,7 +7,8 @@ layout(location=0) out vec4 color;
 				
 uniform sampler2D text;
 uniform vec3 ambient = vec3(0.2, 0.2, 0.2);
-uniform vec3 eyePos = vec3(10, 10, 10);
+//uniform vec3 eyePos = vec3(10, 10, 10);
+
 in vec3 vNormal;						//三角形的每一個點都經過 fs.txt 內轉換
 in vec2 vUV;							//flat in vec2 vUV;	 不內插
 in vec3 vPos;
@@ -16,7 +17,7 @@ void main()
 	
 	vec3 c = texture(text, vUV).xyz;			//.xyz ->萃取rgb, vec4 改成 vec3
 	vec3 l = normalize(vec3(1, 1, 0));
-	vec3 e_hat = normalize(eyePos - vPos);					//eyePos - vPos
+	vec3 e_hat = normalize(-vPos);					//eyePos - vPos
 	vec3 r = reflect(-l, vNormal);
 	float spec = pow(max(dot(e_hat, r), 0.0), 30);
 	float diffuse = max(dot(vNormal, l), 0);	//Lamber diffuse model 

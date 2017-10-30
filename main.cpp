@@ -58,7 +58,7 @@ int main(void)
 		std::cerr<<"WARNING: The mesh has no UV data\n";
 	}
 
-    auto view = glm::lookAt(glm::vec3{10.0f, 10.0f, 10.0f}, glm::vec3{0.0f, 0.0f, 0.0f}, glm::vec3{0.0f, 1.0f, 0.0f});
+    auto view = glm::lookAt(glm::vec3{0.0f, 0.0f, 0.0f}, glm::vec3{-10.0f, -10.0f, -10.0f}, glm::vec3{0.0f, 1.0f, 0.0f});
     auto proj = glm::perspective(glm::pi<float>()/4, 1600.0f/1200.0f, 0.1f, 100.f);
     prog["vp"] = proj*view;	//[]查model id, = 上傳(glm::mat4 UniformVariable::operator=(const glm::mat4 &v))		//fs.txt	
     prog["text"] = 0;		//=(int32_t UniformVariable::operator=(int32_t val))	//貼圖綁在 0 號通道上
@@ -75,7 +75,7 @@ int main(void)
 		std::cerr << "WARNING: The mesh has no UV data\n";
 	}
 
-	auto view_satel = glm::lookAt(glm::vec3{ 10.0f, 10.0f, 10.0f }, glm::vec3{ 0.0f, 0.0f, 0.0f }, glm::vec3{ 0.0f, 1.0f, 0.0f });
+	auto view_satel = glm::lookAt(glm::vec3{ 0.0f, 0.0f, 0.0f }, glm::vec3{ -10.0f, -10.0f, -10.0f }, glm::vec3{ 0.0f, 1.0f, 0.0f });
 	auto proj_satel = glm::perspective(glm::pi<float>() / 4, 1600.0f / 1200.0f, 0.1f, 100.f);
 	prog_satel["vp"] = proj_satel*view_satel;
 	prog_satel["text"] = 0;
@@ -103,8 +103,9 @@ int main(void)
 		std::cerr << "WARNING: The sun has no UV data\n";
 	}
 
-	auto view2 = glm::lookAt(glm::vec3{ 10.0f, 10.0f, 10.0f }, glm::vec3{ 0.0f, 0.0f, 0.0f }, glm::vec3{ 0.0f, 1.0f, 0.0f });
+	auto view2 = glm::lookAt(glm::vec3{ 0.0f, 0.0f, 0.0f }, glm::vec3{ -10.0f, -10.0f, -10.0f }, glm::vec3{ 0.0f, 1.0f, 0.0f });
 	auto proj2 = glm::perspective(glm::pi<float>() / 4, 1600.0f / 1200.0f, 0.1f, 100.f);
+	prog2["invPersMatrix"] = inverse(proj2);	//NEW!
 	prog2["vp"] = proj2*view2;
 	prog2["text"] = 0;
 	auto uniform_model2 = prog2["model"];
@@ -120,7 +121,7 @@ int main(void)
 		std::cerr << "WARNING: The mesh has no UV data\n";
 	}
 
-	auto view3 = glm::lookAt(glm::vec3{ 10.0f, 10.0f, 10.0f }, glm::vec3{ 0.0f, 0.0f, 0.0f }, glm::vec3{ 0.0f, 1.0f, 0.0f });
+	auto view3 = glm::lookAt(glm::vec3{ 0.0f, 0.0f, 0.0f }, glm::vec3{ -10.0f, -10.0f, -10.0f }, glm::vec3{ 0.0f, 1.0f, 0.0f });
 	auto proj3 = glm::perspective(glm::pi<float>() / 4, 1600.0f / 1200.0f, 0.1f, 100.f);
 	prog3["vp"] = proj3*view3;
 	prog3["text"] = 0;
@@ -137,7 +138,7 @@ int main(void)
 		std::cerr << "WARNING: The mesh has no UV data\n";
 	}
 
-	auto view4 = glm::lookAt(glm::vec3{ 10.0f, 10.0f, 10.0f }, glm::vec3{ 0.0f, 0.0f, 0.0f }, glm::vec3{ 0.0f, 1.0f, 0.0f });
+	auto view4 = glm::lookAt(glm::vec3{ 0.0f, 0.0f, 0.0f }, glm::vec3{ -10.0f, -10.0f, -10.0f }, glm::vec3{ 0.0f, 1.0f, 0.0f });
 	auto proj4 = glm::perspective(glm::pi<float>() / 4, 1600.0f / 1200.0f, 0.1f, 100.f);
 	prog4["vp"] = proj4*view4;
 	prog4["text"] = 0;
@@ -154,7 +155,7 @@ int main(void)
 		std::cerr << "WARNING: The mesh has no UV data\n";
 	}
 
-	auto view5 = glm::lookAt(glm::vec3{ 10.0f, 10.0f, 10.0f }, glm::vec3{ 0.0f, 0.0f, 0.0f }, glm::vec3{ 0.0f, 1.0f, 0.0f });
+	auto view5 = glm::lookAt(glm::vec3{ 0.0f, 0.0f, 0.0f }, glm::vec3{ -10.0f, -10.0f, -10.0f }, glm::vec3{ 0.0f, 1.0f, 0.0f });
 	auto proj5 = glm::perspective(glm::pi<float>() / 4, 1600.0f / 1200.0f, 0.1f, 100.f);
 	prog5["vp"] = proj5*view5;
 	prog5["text"] = 0;
@@ -171,7 +172,7 @@ int main(void)
 		std::cerr << "WARNING: The mesh has no UV data\n";
 	}
 
-	auto view6 = glm::lookAt(glm::vec3{ 10.0f, 10.0f, 10.0f }, glm::vec3{ 0.0f, 0.0f, 0.0f }, glm::vec3{ 0.0f, 1.0f, 0.0f });
+	auto view6 = glm::lookAt(glm::vec3{ 0.0f, 0.0f, 0.0f }, glm::vec3{ -10.0f, -10.0f, -10.0f }, glm::vec3{ 0.0f, 1.0f, 0.0f });
 	auto proj6 = glm::perspective(glm::pi<float>() / 4, 1600.0f / 1200.0f, 0.1f, 100.f);
 	prog6["vp"] = proj6*view6;
 	prog6["text"] = 0;
@@ -188,7 +189,7 @@ int main(void)
 		std::cerr << "WARNING: The mesh has no UV data\n";
 	}
 
-	auto view7 = glm::lookAt(glm::vec3{ 10.0f, 10.0f, 10.0f }, glm::vec3{ 0.0f, 0.0f, 0.0f }, glm::vec3{ 0.0f, 1.0f, 0.0f });
+	auto view7 = glm::lookAt(glm::vec3{ 0.0f, 0.0f, 0.0f }, glm::vec3{ -10.0f, -10.0f, -10.0f }, glm::vec3{ 0.0f, 1.0f, 0.0f });
 	auto proj7 = glm::perspective(glm::pi<float>() / 4, 1600.0f / 1200.0f, 0.1f, 100.f);
 	prog7["vp"] = proj7*view7;
 	prog7["text"] = 0;
@@ -205,7 +206,7 @@ int main(void)
 		std::cerr << "WARNING: The mesh has no UV data\n";
 	}
 
-	auto view8 = glm::lookAt(glm::vec3{ 10.0f, 10.0f, 10.0f }, glm::vec3{ 0.0f, 0.0f, 0.0f }, glm::vec3{ 0.0f, 1.0f, 0.0f });
+	auto view8 = glm::lookAt(glm::vec3{ 0.0f, 0.0f, 0.0f }, glm::vec3{ -10.0f, -10.0f, -10.0f }, glm::vec3{ 0.0f, 1.0f, 0.0f });
 	auto proj8 = glm::perspective(glm::pi<float>() / 4, 1600.0f / 1200.0f, 0.1f, 100.f);
 	prog8["vp"] = proj8*view8;
 	prog8["text"] = 0;
@@ -222,7 +223,7 @@ int main(void)
 		std::cerr << "WARNING: The mesh has no UV data\n";
 	}
 
-	auto view9 = glm::lookAt(glm::vec3{ 10.0f, 10.0f, 10.0f }, glm::vec3{ 0.0f, 0.0f, 0.0f }, glm::vec3{ 0.0f, 1.0f, 0.0f });
+	auto view9 = glm::lookAt(glm::vec3{ 0.0f, 0.0f, 0.0f }, glm::vec3{ -10.0f, -10.0f, -10.0f }, glm::vec3{ 0.0f, 1.0f, 0.0f });
 	auto proj9 = glm::perspective(glm::pi<float>() / 4, 1600.0f / 1200.0f, 0.1f, 100.f);
 	prog9["vp"] = proj9*view9;
 	prog9["text"] = 0;
@@ -235,8 +236,17 @@ int main(void)
     {
         // draw
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		//-------------- sun --------------------
+		auto model_trans2 = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, -10.0f, -10.0f));
+		auto model_rotat2 = glm::rotate(model_trans2, static_cast<float>(glfwGetTime())
+			, glm::vec3(0.0f, 1.0f, 0.0f));
+
+		uniform_model2 = model_rotat2;
+		prog2.use();
+		text2.bindToChannel(0);
+		sun.draw();
 		//------------- earth ---------------------
-        auto model = glm::rotate(glm::mat4(1.0f), static_cast<float>(glfwGetTime())
+        auto model = glm::rotate(model_trans2, static_cast<float>(glfwGetTime())
             , glm::vec3(0.0f, 1.0f, 0.0f));
 		auto model_trans = glm::translate(model, glm::vec3(0.0f, 0.0f, -9.0f));
 		auto model_rotat = glm::rotate(model_trans, 15 * static_cast<float>(glfwGetTime()) / 10
@@ -259,14 +269,7 @@ int main(void)
 		prog_satel.use();
 		text_satel.bindToChannel(0);
 		earth_satel.draw();
-		//-------------- sun --------------------
-		auto model_rotat2 = glm::rotate(glm::mat4(1.0f), static_cast<float>(glfwGetTime())
-			, glm::vec3(0.0f, 1.0f, 0.0f));
-
-		uniform_model2 = model_rotat2;
-		prog2.use();
-		text2.bindToChannel(0);
-		sun.draw();
+		
 		//-------------- mesh3 --------------------
 		//auto model_rotat3 = glm::rotate(glm::mat4(1.0f), 18*static_cast<float>(glfwGetTime())/10
 		//	, glm::vec3(0.0f, 1.0f, 0.0f));
@@ -275,6 +278,9 @@ int main(void)
 		//uniform_model3 = model_scale3;
         
 		// #include <glm/gtc/quaternion.hpp> and <glm/gtx/quaternion.hpp>
+		//Translate
+		//auto pos = glm::vec3(-10.0f, -10.0f, -10.0f);
+		//model3[3] = model[0] * pos[0] + model[1] * pos[1] + model[2] * pos[2] + model[3];
 		//Rotate
 		glm::quat quat_rotat;	// Creates an identity quaternion (no rotation)
 		quat_rotat = normalize(glm::quat(0, sin(static_cast<float>(0.5*glfwGetTime())/2),0, cos(static_cast<float>(0.5*glfwGetTime())/2)));
@@ -282,14 +288,14 @@ int main(void)
 		auto model3 = matrix_rotate;
 		//Translate
 		auto v = glm::vec3(4.0f, 0.0f, 0.0f);
-		auto u = glm::vec3(0.5f, 0.5f, 0.5f);
-		model3[3] = model[0]*v[0]+ model[1]*v[1]+model[2]*v[2]+ model[3];
+		model3[3] = model3[0]*v[0]+ model3[1]*v[1]+model3[2]*v[2]+ model3[3];
 		//Rotate2
 		glm::quat quat_rotat2;
 		quat_rotat2 = normalize(glm::quat(sin(static_cast<float>(1.5*glfwGetTime()) / 2), sin(static_cast<float>(1.5*glfwGetTime()) / 2), 0, cos(static_cast<float>(1.5*glfwGetTime()) / 2)));
 		glm::mat4 matrix_rotate2 = glm::toMat4(quat_rotat2);
 		auto model_trans3 = model3*matrix_rotate2;
 		//Scale
+		auto u = glm::vec3(0.5f, 0.5f, 0.5f);
 		model3[0] = model[0] * u[0];
 		model3[1] = model[1] * u[1];
 		model3[2] = model[2] * u[2];
@@ -301,7 +307,7 @@ int main(void)
 		text3.bindToChannel(0);
 		mesh3.draw();
 		//-------------- mesh4 --------------------
-		auto model_rotat4 = glm::rotate(glm::mat4(1.0f), 1*static_cast<float>(glfwGetTime()) / 10
+		auto model_rotat4 = glm::rotate(model_trans2, 1*static_cast<float>(glfwGetTime()) / 10
 			, glm::vec3(0.0f, 1.0f, 0.0f));
 		auto model_trans4 = glm::translate(model_rotat4, glm::vec3(0.0f, 0.0f, -6.0f));
 		auto model_rotat4_2 = glm::rotate(model_trans4, 12 * static_cast<float>(glfwGetTime()) / 10
@@ -313,7 +319,7 @@ int main(void)
 		text4.bindToChannel(0);
 		mesh4.draw();
 		//-------------- mesh5 --------------------
-		auto model_rotat5 = glm::rotate(glm::mat4(1.0f), 15*static_cast<float>(glfwGetTime()) / 10
+		auto model_rotat5 = glm::rotate(model_trans2, 15*static_cast<float>(glfwGetTime()) / 10
 			, glm::vec3(0.0f, 1.0f, 0.0f));
 		auto model_trans5 = glm::translate(model_rotat5, glm::vec3(0.0f, 0.0f, -12.0f));
 		auto model_rotat5_2 = glm::rotate(model_trans5, 13 * static_cast<float>(glfwGetTime()) / 10
@@ -325,7 +331,7 @@ int main(void)
 		text5.bindToChannel(0);
 		mesh5.draw();
 		//-------------- mesh6 --------------------
-		auto model_rotat6 = glm::rotate(glm::mat4(1.0f), 4*static_cast<float>(glfwGetTime()) / 10
+		auto model_rotat6 = glm::rotate(model_trans2, 4*static_cast<float>(glfwGetTime()) / 10
 			, glm::vec3(0.0f, 1.0f, 0.0f));
 		auto model_trans6 = glm::translate(model_rotat6, glm::vec3(0.0f, 0.0f, -15.0f));
 		auto model_rotat6_2 = glm::rotate(model_trans6, 7 * static_cast<float>(glfwGetTime()) / 10
@@ -337,7 +343,7 @@ int main(void)
 		text6.bindToChannel(0);
 		mesh6.draw();
 		//-------------- mesh7 --------------------
-		auto model_rotat7 = glm::rotate(glm::mat4(1.0f), 7*static_cast<float>(glfwGetTime()) / 10
+		auto model_rotat7 = glm::rotate(model_trans2, 7*static_cast<float>(glfwGetTime()) / 10
 			, glm::vec3(0.0f, 1.0f, 0.0f));
 		auto model_trans7 = glm::translate(model_rotat7, glm::vec3(0.0f, 0.0f, -18.0f));
 		auto model_rotat7_2 = glm::rotate(model_trans7, 5 * static_cast<float>(glfwGetTime()) / 10
@@ -349,7 +355,7 @@ int main(void)
 		text7.bindToChannel(0);
 		mesh7.draw();
 		//-------------- mesh8 --------------------
-		auto model_rotat8 = glm::rotate(glm::mat4(1.0f), 5*static_cast<float>(glfwGetTime()) / 10
+		auto model_rotat8 = glm::rotate(model_trans2, 5*static_cast<float>(glfwGetTime()) / 10
 			, glm::vec3(0.0f, 1.0f, 0.0f));
 		auto model_trans8 = glm::translate(model_rotat8, glm::vec3(0.0f, 0.0f, -21.0f));
 		auto model_rotat8_2 = glm::rotate(model_trans8, 3 * static_cast<float>(glfwGetTime()) / 10
@@ -361,7 +367,7 @@ int main(void)
 		text8.bindToChannel(0);
 		mesh8.draw();
 		//-------------- mesh9 --------------------
-		auto model_rotat9 = glm::rotate(glm::mat4(1.0f), 2*static_cast<float>(glfwGetTime()) / 10
+		auto model_rotat9 = glm::rotate(model_trans2, 2*static_cast<float>(glfwGetTime()) / 10
 			, glm::vec3(0.0f, 1.0f, 0.0f));
 		auto model_trans9 = glm::translate(model_rotat9, glm::vec3(0.0f, 0.0f, -24.0f));
 		auto model_rotat9_2 = glm::rotate(model_trans9, 1 * static_cast<float>(glfwGetTime()) / 10

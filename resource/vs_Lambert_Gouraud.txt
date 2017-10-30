@@ -16,7 +16,7 @@ uniform mat4 model;
 uniform mat4 vp;
 
 uniform vec3 ambient = vec3(0.2, 0.2, 0.2);
-uniform vec3 eyePos = vec3(25, 25, 25);
+//uniform vec3 eyePos = vec3(25, 25, 25);
 
 // 'out' means vertex shader output for fragment shader
 out vec3 vcolor;			
